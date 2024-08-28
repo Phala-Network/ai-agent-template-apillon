@@ -8,11 +8,11 @@ try {
     secret: process.env.APILLON_API_SECRET,
     logLevel: LogLevel.VERBOSE,
   });
-
-// create and instance of a bucket directly through uuid
+  const gatewayUrl = 'https://wapo-testnet.phala.network';
+  // create and instance of a bucket directly through uuid
   const bucket = storage.bucket(process.env.APILLON_S3_BUCKET_UUID ?? '');
 
-// send file buffers as upload parameters
+  // send file buffers as upload parameters
   const agentScriptBuffer = fs.readFileSync('./dist/index.js');
 
   const agentScriptUpload = await bucket.uploadFiles(
@@ -35,8 +35,8 @@ try {
     console.log(`Checking for published CID ${JSON.stringify(file)}`);
     if (file.CID) {
       fileCID = file.CID as string;
-      console.log(`\nAI Agent Contract deployed at: https://agents.phala.network/ipfs/${fileCID}`);
-      console.log(`\nMake sure to add your secrets to ensure your AI-Agent works properly.`);
+      console.log(`\nAgent Contract deployed at: ${gatewayUrl}/ipfs/${fileCID}`);
+      console.log(`\nIf your agent requires secrets, ensure to do the following:\n1) Edit the setSecrets.ts file to add your secrets\n2) Set the variable AGENT_CID=${fileCID} in the .env file\n3) Run command: npm run set-secrets`);
     }
   }
 } catch (error) {

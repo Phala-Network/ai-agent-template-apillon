@@ -14,11 +14,11 @@
     <a href="https://github.com/Phala-Network/ai-agent-template-apillon"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="QmQu9AmBL13tyGpxgg5ASt96WQ669p63rnJRWiAo9st8ns/0?key=c0c0105ba56276cd&chatQuery=When%20did%20humans%20land%20on%20the%20moon">View Demo</a>
+    <a href="https://wapo-testnet.phala.network/ipfs/bafkreia3u5vq56pwezjoqo4v4lnyrvvbxwjndsr4cws3qm6yu7rwj6jaie?key=89e1e116909c1a6d&chatQuery=When%20did%20humans%20land%20on%20the%20moon">View Demo</a>
     ·
     <a href="https://github.com/Phala-Network/ai-agent-template-apillon/issues">Report Bug</a>
     ·
-    <a href="https://discord.gg/DXGGJajW">Discord</a>
+    <a href="https://discord.gg/phala-network">Discord</a>
   </p>
 
   <h3>Architecure Overview</h3>
@@ -70,50 +70,28 @@ npm run test
 
 Expected Test Results
 ```shell
-INPUT: {"method":"GET","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["Who are you?"]},"secret":{"openaiApiKey":"YOUR_OPENAI_KEY"},"headers":{}}
+INPUT: {"method":"GET","path":"/ipfs/CID","queries":{"chatQuery":["When did humans land on the moon?"],"openAiModel":["gpt-4o"]},"secret":{"openaiApiKey":"OPENAI_API_KEY"},"headers":{}}
 GET RESULT: {
   status: 200,
-  body: '\n' +
-    '    <!DOCTYPE html>\n' +
-    '    <html lang="en">\n' +
-    '        <head>\n' +
-    '            <meta charset="utf-8" />\n' +
-    '            <title>TestUI</title>\n' +
-    '        </head>\n' +
-    '        <body>\n' +
-    '            <div align="center">\n' +
-    '                <p>I am an AI-powered digital assistant here to help answer your questions and assist you with various tasks. How can I assist you today?</p>\n' +
-    '            </div>\n' +
-    '        </body>\n' +
-    '    </html>',
+  body: `{"message":"Humans first landed on the moon on July 20, 1969. This historic event was accomplished during NASA's Apollo 11 mission. Astronauts Neil Armstrong and Edwin \\"Buzz\\" Aldrin became the first humans to set foot on the lunar surface, while Michael Collins remained in lunar orbit aboard the command module. Armstrong's famous words as he descended onto the moon's surface were, \\"That's one small step for man, one giant leap for mankind.\\""}`,
   headers: {
-    'Content-Type': 'text/html; charset=UTF-8',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   }
 }
-
-
-INPUT: {"method":"POST","path":"/ipfs/QmVHbLYhhYA5z6yKpQr4JWr3D54EhbSsh7e7BFAAyrkkMf","queries":{"chatQuery":["When did humans land on the moon?"]},"secret":{"openaiApiKey":"YOUR_OPENAI_KEY"},"headers":{},"body":"{\"untrustedData\":{\"fid\":2,\"url\":\"https://fcpolls.com/polls/1\",\"messageHash\":\"0xd2b1ddc6c88e865a33cb1a565e0058d757042974\",\"timestamp\":1706243218,\"network\":1,\"buttonIndex\":2,\"castId\":{\"fid\":226,\"hash\":\"0xa48dd46161d8e57725f5e26e34ec19c13ff7f3b9\"}},\"trustedData\":{\"messageBytes\":\"d2b1ddc6c88e865a33cb1a565e0058d757042974...\"}}"}
+INPUT: {"method":"POST","path":"/ipfs/CID","queries":{"chatQuery":["When did humans land on the moon?"],"openAiModel":["gpt-4o"]},"secret":{"openaiApiKey":"OPENAI_API_KEY"},"headers":{},"body":"{}"}
 POST RESULT: {
   status: 200,
-  body: '\n' +
-    '    <!DOCTYPE html>\n' +
-    '    <html lang="en">\n' +
-    '        <head>\n' +
-    '            <meta charset="utf-8" />\n' +
-    '            <title>TestUI</title>\n' +
-    '        </head>\n' +
-    '        <body>\n' +
-    '            <div align="center">\n' +
-    "                <p>Humans first landed on the moon on July 20, 1969, during NASA's Apollo 11 mission.</p>\n" +
-    '            </div>\n' +
-    '        </body>\n' +
-    '    </html>',
+  body: '{"message":"Not Implemented"}',
   headers: {
-    'Content-Type': 'text/html; charset=UTF-8',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   }
 }
+**NOTE**:
+This is a local test and your published code could have a different result when executing in the TEE on Phala Network.
+
+Please reach out to the team here if your run into issues: https://discord.gg/phala-network
 ```
 
 ### Publish Your AI Agent
@@ -134,27 +112,29 @@ APILLON_S3_BUCKET_UUID="Your S3 Bucket Created in Apillon Dashboard"
 
 Upon a successful upload, the command should show the URL to access your AI Agent.
 ```
-npm run publish
-
-> phat-gpt-template@0.0.1 publish
-> phat-fn build --experimentalAsync && tsx scripts/publish.ts
-
 ✓ Compiled successfully.
-  51.37 KB  dist/index.js
+  76.85 KB  dist/index.js
 Preparing to upload 1 files...
 Total files to upload: 1
 File uploaded: index.js
-2024-05-08T13:41:17.485Z:  File upload complete.
+2024-08-28T15:38:34.252Z:  File upload complete.
 Closing upload session...
-2024-05-08T13:41:18.843Z:  Upload session ended.
+2024-08-28T15:38:35.431Z:  Upload session ended.
 null
-Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/0df84471-fa8f-4c8e-9fab-e943d47237d6","createTime":"2024-05-08T13:41:18.000Z","updateTime":"2024-05-08T13:41:18.000Z","uuid":"0df84471-fa8f-4c8e-9fab-e943d47237d6","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":null,"status":2,"type":2,"link":null,"path":null}
-Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/0df84471-fa8f-4c8e-9fab-e943d47237d6","createTime":"2024-05-08T13:41:18.000Z","updateTime":"2024-05-08T13:41:18.000Z","uuid":"0df84471-fa8f-4c8e-9fab-e943d47237d6","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":null,"status":2,"type":2,"link":null,"path":null}
-Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/0df84471-fa8f-4c8e-9fab-e943d47237d6","createTime":"2024-05-08T13:41:18.000Z","updateTime":"2024-05-08T13:41:29.000Z","uuid":"0df84471-fa8f-4c8e-9fab-e943d47237d6","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":"bafkreibn2k2pr7i5ufm5yzizmuxayleqv4khb7rrsdatbpowd7syc3vady","status":3,"type":2,"link":"https://bafkreibn2k2pr7i5ufm5yzizmuxayleqv4khb7rrsdatbpowd7syc3vady.ipfs.nectarnode.io/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiJiYWZrcmVpYm4yazJwcjdpNXVmbTV5eml6bXV4YXlsZXF2NGtoYjdycnNkYXRicG93ZDdzeWMzdmFkeSIsInByb2plY3RfdXVpZCI6ImFlMDEyOWFkLWZjYTItNGRmMC04ZTY0LTU2NDg0MjdmNzMxMyIsImlhdCI6MTcxNTE3NTY5MSwic3ViIjoiSVBGUy10b2tlbiJ9.DzzEmNKiaYVCxsN_CZ9MXIH8Tys3QJ2eRXSChvuNxIA","path":null}
+Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/2da35681-20ce-4f3f-8992-9a4049231f46","createTime":"2024-08-28T15:38:35.000Z","updateTime":"2024-08-28T15:38:35.000Z","uuid":"2da35681-20ce-4f3f-8992-9a4049231f46","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":null,"status":2,"type":2,"link":null,"path":null}
+Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/2da35681-20ce-4f3f-8992-9a4049231f46","createTime":"2024-08-28T15:38:35.000Z","updateTime":"2024-08-28T15:38:35.000Z","uuid":"2da35681-20ce-4f3f-8992-9a4049231f46","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":null,"status":2,"type":2,"link":null,"path":null}
+Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/2da35681-20ce-4f3f-8992-9a4049231f46","createTime":"2024-08-28T15:38:35.000Z","updateTime":"2024-08-28T15:38:35.000Z","uuid":"2da35681-20ce-4f3f-8992-9a4049231f46","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":null,"status":2,"type":2,"link":null,"path":null}
+Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/2da35681-20ce-4f3f-8992-9a4049231f46","createTime":"2024-08-28T15:38:35.000Z","updateTime":"2024-08-28T15:38:35.000Z","uuid":"2da35681-20ce-4f3f-8992-9a4049231f46","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":null,"status":2,"type":2,"link":null,"path":null}
+Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/2da35681-20ce-4f3f-8992-9a4049231f46","createTime":"2024-08-28T15:38:35.000Z","updateTime":"2024-08-28T15:38:35.000Z","uuid":"2da35681-20ce-4f3f-8992-9a4049231f46","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":null,"status":2,"type":2,"link":null,"path":null}
+Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/2da35681-20ce-4f3f-8992-9a4049231f46","createTime":"2024-08-28T15:38:35.000Z","updateTime":"2024-08-28T15:38:35.000Z","uuid":"2da35681-20ce-4f3f-8992-9a4049231f46","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":null,"status":2,"type":2,"link":null,"path":null}
+Checking for published CID {"API_PREFIX":"/storage/buckets/ee410fe7-bdb0-4308-9ee3-b74cec5f6dab/files/2da35681-20ce-4f3f-8992-9a4049231f46","createTime":"2024-08-28T15:38:35.000Z","updateTime":"2024-08-28T15:39:04.000Z","uuid":"2da35681-20ce-4f3f-8992-9a4049231f46","bucketUuid":"ee410fe7-bdb0-4308-9ee3-b74cec5f6dab","directoryUuid":null,"name":"index.js","CID":"bafkreia3u5vq56pwezjoqo4v4lnyrvvbxwjndsr4cws3qm6yu7rwj6jaie","status":3,"type":2,"link":"https://bafkreia3u5vq56pwezjoqo4v4lnyrvvbxwjndsr4cws3qm6yu7rwj6jaie.ipfs.web3approved.com/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaWQiOiJiYWZrcmVpYTN1NXZxNTZwd2V6am9xbzR2NGxueXJ2dmJ4d2puZHNyNGN3czNxbTZ5dTdyd2o2amFpZSIsInByb2plY3RfdXVpZCI6ImFlMDEyOWFkLWZjYTItNGRmMC04ZTY0LTU2NDg0MjdmNzMxMyIsImlhdCI6MTcyNDg1OTU0NSwic3ViIjoiSVBGUy10b2tlbiJ9.tHczjZ1qZmp8gb88srDXUG4c8OHNX5V00IRgu528-i0","path":null}
 
-AI Agent Contract deployed at: https://agents.phala.network/ipfs/bafkreibn2k2pr7i5ufm5yzizmuxayleqv4khb7rrsdatbpowd7syc3vady
+Agent Contract deployed at: https://wapo-testnet.phala.network/ipfs/bafkreia3u5vq56pwezjoqo4v4lnyrvvbxwjndsr4cws3qm6yu7rwj6jaie
 
-Make sure to add your secrets to ensure your AI-Agent works properly.
+If your agent requires secrets, ensure to do the following:
+1) Edit the setSecrets.ts file to add your secrets
+2) Set the variable AGENT_CID=bafkreia3u5vq56pwezjoqo4v4lnyrvvbxwjndsr4cws3qm6yu7rwj6jaie in the .env file
+3) Run command: npm run set-secrets
 ```
 
 ### Access the Published AI Agent
@@ -171,40 +151,41 @@ curl https://agents.phala.network/ipfs/<your-cid>
 
 By default, all the compiled JS code is visible for anyone to view if they look at IPFS CID. This makes private info like API keys, signer keys, etc. vulnerable to be stolen. To protect devs from leaking keys, we have added a field called `secret` in the `Request` object. It allows you to store secrets in a vault for your AI Agent to access.
 
-<details>
-<summary><b>How to Add Secrets</b></summary>
-
-The steps to add a `secret` is simple. We will add the [OpenAI](https://platform.openai.com/docs/quickstart?context=node) API Key in this example by creating a secret JSON object with the `openaiApiKey`:
-
-```json
-{"openaiApiKey": "<OPENAI_API_KEY>"}
+To add your secrets,
+1) edit the [setSecrets.ts](./scripts/setSecrets.ts) file and update the `secrets` variable at the top of the file
+```typescript
+// Update your key value JSON object here for your secrets
+const secrets = JSON.stringify({
+  // Add your secrets here
+  // key: value
+  openaiApiKey: process.env.OPENAI_API_KEY
+})
 ```
-
-Then in your frame code, you will be able to access the secret key via `req.secret` object:
-
-```js
-async function POST(req: Request): Promise<Response> {
-    const apiKey = req.secret?.apiKey
-}
+2) Update the [.env](./.env.example) file with your published agent IPFS CID
+```text
+AGENT_CID=bafkreia3u5vq56pwezjoqo4v4lnyrvvbxwjndsr4cws3qm6yu7rwj6jaie
 ```
-
-> **Note**: Before continuing, make sure to publish your compiled AI Agent JS code, so you can add secrets to the CID.
-
-**Open terminal**
-Use `curl` to `POST` your secrets to `https://agents.phala.network/vaults`. Replace `IPFS_CID` with the CID to the compile JS code in IPFS, and replace `<OPENAI_API_KEY>` with your OpenAI API key. Note that you can name the secret field name something other than `openaiApiKey`, but you will need to access the key in your `index.ts` file with the syntax `req.secret?.<your-secret-field-name> as string`
-
-The command will look like this:
+3) Run command to set the secrets
 ```shell
-curl https://agents.phala.network/vaults -H 'Content-Type: application/json' -d '{"cid": "IPFS_CID", "data": {"openaiApiKey": "<OPENAI_API_KEY>"}}'
-# Output:
-# {"token":"e85ae53d2ba4ca8d","key":"e781ef31210e0362","succeed":true}
+npm run set-secrets
+```
+Expected output:
+```shell
+Storing secrets...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   218    0    68  100   150    125    276 --:--:-- --:--:-- --:--:--   402
+{"token":"0ac3d790b17a446b","key":"89e1e116909c1a6d","succeed":true}
+
+Secrets set successfully. Go to the URL below to interact with your agent:
+https://wapo-testnet.phala.network/ipfs/bafkreia3u5vq56pwezjoqo4v4lnyrvvbxwjndsr4cws3qm6yu7rwj6jaie?key=89e1e116909c1a6d
 ```
 
 The API returns a `token` and a `key`. The `key` is the id of your secret. It can be used to specify which secret you are going to pass to your frame. The `token` can be used by the developer to access the raw secret. You should never leak the `token`.
 
 To verify the secret, run the following command where `key` and `token` are replaced with the values from adding your `secret` to the vault.
 ```shell
-curl https://agents.phala.network/vaults/<key>/<token>
+curl https://wapo-testnet.phala.network/vaults/<key>/<token>
 ```
 
 Expected output:
@@ -212,22 +193,12 @@ Expected output:
 {"data":{"openaiApiKey":"<OPENAI_API_KEY>"},"succeed":true}
 ```
 
-If you are using secrets, make sure that your URL is set in the following syntax where `cid` is the IPFS CID of your compiled JS file and `key` is the `key` from adding secrets to your vault.
-```text
-https://agents.phala.network/ipfs/<cid>?key=<key>
-```
-
-Example:
-https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9VzvkkdeFny7Smn3R/0?key=686df81d326fa5f2&chatQuery=When%20did%20humans%20land%20on%20the%20moon
-
-</details>
-
 ### Access Queries
 To help create custom logic, we have an array variable named `queries` that can be accessed in the `Request` class. To access the `queries` array variable `chatQuery` value at index `0`, the syntax will look as follows:
 ```typescript
 const query = req.queries.chatQuery[0] as string;
 ```
-The example at https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9VzvkkdeFny7Smn3R/0?key=686df81d326fa5f2&chatQuery=When%20did%20humans%20land%20on%20the%20moon will have a value of `When did humans land on the moon`. `queries` can have any field name, so `chatQuery` is just an example of a field name and not a mandatory name, but remember to update your `index.ts` file logic to use your expected field name.
+The example at https://wapo-testnet.phala.network/ipfs/bafkreia3u5vq56pwezjoqo4v4lnyrvvbxwjndsr4cws3qm6yu7rwj6jaie?key=89e1e116909c1a6d&chatQuery=When%20did%20humans%20land%20on%20the%20moon will have a value of `When did humans land on the moon`. `queries` can have any field name, so `chatQuery` is just an example of a field name and not a mandatory name, but remember to update your `index.ts` file logic to use your expected field name.
 
 
 ## FAQ
@@ -238,8 +209,7 @@ The example at https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9V
   <li>Most of the npm packages are supported: viem, onchainkit, ….</li>
   <li>Some packages with some advanced features are not supported:</li>
   <ul>
-    <li>Large code size. Compiled bundle should be less than 500kb.</li>
-    <li>Large memory usage, like image generation</li>
+    <li>Memory usage over 100MB</li>
     <li>Web Assembly</li>
     <li>Browser only features: local storage, service workers, etc</li>
   </ul>
@@ -251,13 +221,7 @@ The example at https://agents.phala.network/ipfs/Qma2WjqWqW8wYG2tEQ9YFUgyVrMDA9V
 <ul>
   <li>The code runs inside a tailored <a href="https://bellard.org/quickjs/">QuickJS engine</a></li>
   <li>Available features: ES2023, async, fetch, setTimeout, setInterval, bigint</li>
-  <li>Resource limits</li>
-  <ul>
-    <li>Max execution time ~30s</li>
-    <li>Max memory usage: 16 mb</li>
-    <li>Max code size: 500 kb</li>
-    <li>Limited CPU burst: CPU time between async calls is limited. e.g. Too complex for-loop may hit the burst limit.</li>
-  </ul>
+  <li> <a href="https://docs.phala.network/tech-specs/ai-agent-contract#wapojs/">Tech spec doc</a></li>
 </ul>
 </details>
 

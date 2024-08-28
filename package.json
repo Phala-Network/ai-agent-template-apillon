@@ -9,17 +9,18 @@
   "scripts": {
     "build": "phat-fn build --experimentalAsync",
     "test": "tsx src/test.ts",
+    "set-secrets": "tsx scripts/setSecrets.ts",
     "lint": "tsc --noEmit",
-    "publish": "phat-fn build --experimentalAsync && tsx scripts/publish.ts"
+    "publish-agent": "phat-fn build --experimentalAsync && tsx scripts/publish.ts"
   },
   "devDependencies": {
-    "@apillon/sdk": "^3.0.0",
+    "@apillon/sdk": "^3.2.0",
     "@phala/fn": "^0.2.22",
     "dotenv": "^16.4.5",
     "tsx": "^4.7.1",
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "openai": "^4.28.4"
+    "openai": "^4.56.1"
   }
 }
